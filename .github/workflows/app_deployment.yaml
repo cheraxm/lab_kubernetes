@@ -1,0 +1,35 @@
+name: Deploy to Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: /Users/cheraxmz/Documents/Kubernetes/my-ipa-app:latest
+
+    - name: Set up Kubernetes
+      uses: azure/setup-kubectl@v1
+      with:
+        version: v1.20.0
+
+    - name: Set up Helm
+      uses: azure/setup-helm@v1
+
+    - name: Deploy to Kubernetes
+      run: |
+        helm upgrade --install my-ipa-app /Users/cheraxmz/Documents/Kubernetes/my-ipa-app
