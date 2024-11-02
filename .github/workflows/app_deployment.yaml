@@ -19,8 +19,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: /Users/cheraxmz/Documents/Kubernetes/my-ipa-app
-          file: /Users/cheraxmz/Documents/Kubernetes/my-ipa-app/Dockerfile
+          context: ./my-ipa-app
+          file: ./my-ipa-app/Dockerfile
           push: true
           tags: cheraxm/my-ipa-app:latest
           
