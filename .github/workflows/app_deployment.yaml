@@ -19,10 +19,11 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: /Users/cheraxmz/Documents/Kubernetes/my-ipa-app
+          file: /Users/cheraxmz/Documents/Kubernetes/my-ipa-app/Dockerfile
           push: true
-          tags: cheraxm/my-ipa-app:latest  # แทนที่ด้วยชื่อ Docker image ที่ถูกต้องใน Docker Hub
-
+          tags: cheraxm/my-ipa-app:latest
+          
       - name: Set up Kubernetes
         uses: azure/setup-kubectl@v1
         with:
