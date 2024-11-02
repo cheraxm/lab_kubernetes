@@ -24,7 +24,7 @@ jobs:
       with:
         context: ./my-ipa-app    # Specify the path to the Dockerfile
         push: true
-        tags: your-dockerhub-username/my-ipa-app:latest
+        tags: cheraxm/my-ipa-app:latest
 
     - name: Set up Kubernetes
       uses: azure/setup-kubectl@v1
@@ -36,4 +36,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        helm upgrade --install my-app ./my-ipa-app-chart    # Specify the path to the Helm Chart
+        helm upgrade --install my-ipa-app ./my-ipa-app-chart    # Specify the path to the Helm Chart
